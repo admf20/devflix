@@ -9,6 +9,7 @@ class VideoService{
     async getVideos(){
         const videos = await this.db.getAll(this.collection, tags);
         return videos || [];
+    }
 
     async getVideo({videoId}){
         const video = await this.db.get(this.collection, videoId);
@@ -27,7 +28,7 @@ class VideoService{
 
     async deleteVideo({videoId}){
         const deleteVideoId = await this.db.delete(this.collection, videoId);
-        return deleteVideo;
+        return deleteVideoId;
     }
 }
 
