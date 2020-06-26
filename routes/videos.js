@@ -5,9 +5,11 @@ function VideosApi (app) {
 
     app.use('/api/videos', router)
 
-    router.get('/' ,(req,res) => {
+    router.get('/' ,(req,res,next) => {
+        const {tags} = req.query;
+
         res.status(200).json({
-            data: [],
+            data: tags,
             message: 'videos listed..'
         });
     });
