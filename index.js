@@ -9,7 +9,7 @@ app.use(express.json());
 videosApi(app);
 
 app.listen(config.port, () => {
-    console.log(`Servidor Corriendo en Puerto ${config.port}`);
+    console.log(`Servidor Corriendo en Puerto... ${config.port}`);
 });
 
 
