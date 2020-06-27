@@ -1,4 +1,4 @@
-const BD = require('');
+const BD = require('../lib/db');
 
 class VideoService{
     constructor(){
@@ -27,7 +27,7 @@ class VideoService{
     }
 
     async deleteVideo({videoId}){
-        const deleteVideoId = await this.db.delete(this.collection, videoId);
+        const deleteVideoId = await this.db.Delete(this.collection, videoId);
         return deleteVideoId;
     }
 }
