@@ -6,7 +6,7 @@ class VideoService{
         this.db = new BD();
     }
 
-    async getVideos(){
+    async getVideos(tags){
         const videos = await this.db.getAll(this.collection, tags);
         return videos || [];
     }
@@ -32,4 +32,4 @@ class VideoService{
     }
 }
 
-module.exports = VideoService;
+module.exports = {VideoService};
