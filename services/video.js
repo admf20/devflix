@@ -6,9 +6,14 @@ class VideoService{
         this.db = new BD();
     }
 
-    async getVideos(tags){
-        const videos = await this.db.getAll(this.collection, tags);
-        return videos || [];
+    async getVideos({tags}){
+        let videos = [];
+
+        tags
+           ? videos = await this.db.getAllByTag(this.collection, tags)
+           : videos = await this.db.getAll(this.collection)
+        
+        return videos;
     }
 
     async getVideo({videoId}){
@@ -22,12 +27,14 @@ class VideoService{
     }
 
     async updateVideo({videoId, video}){
+        // console.log(video);
+        
         const updateVideoId = await this.db.update(this.collection, videoId, video);
         return updateVideoId;
     }
 
     async deleteVideo({videoId}){
-        const deleteVideoId = await this.db.Delete(this.collection, videoId);
+        const deleteVideoId = await this.db.delete(this.collection, videoId);
         return deleteVideoId;
     }
 }
