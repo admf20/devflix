@@ -27,8 +27,6 @@ class VideoService{
     }
 
     async updateVideo({videoId, video}){
-        // console.log(video);
-        
         const updateVideoId = await this.db.update(this.collection, videoId, video);
         return updateVideoId;
     }

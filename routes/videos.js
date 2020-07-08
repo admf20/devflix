@@ -63,20 +63,19 @@ router.put('/:videoId', async (req,res,next) => {
         data: UpdateVideo,
         message: 'video updated successfully',
         });
-        console.log(UpdateVideo);
     } catch (err) {
         next(err);
     }
 });
 
-router.delete('/:videoId', (req,res,next) => {
+router.delete('/:videoId', async (req,res,next) => {
         const {videoId} = req.params;
          
         try {
-
+            const deleteVideo = await VideoServices.deleteVideo({videoId})
             res.status(200).json({
-                data: videoId,
-                message: 'video deleted successfully'
+                data: deleteVideo,
+                message: 'video deleted'
             });
         } catch (err) {
             next(err);
